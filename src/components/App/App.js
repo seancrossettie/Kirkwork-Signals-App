@@ -1,33 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import React, { useState } from 'react';
 import Routes from '../../helpers/Routes';
+import LoginPage from '../../pages/LoginPage';
 
 function App() {
-  // This hook maintains state of user in app, the absense of which resulting in the state of null
-  const [user, setUser] = useState(null);
-
-  // Authentication for Firebase on initial render
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged((authed) => {
-      if (authed) {
-        const userObj = {
-          fullName: authed.displayName,
-          profileImage: authed.photoURL,
-          uid: authed.uid,
-          user: authed.email.split('@')[0]
-        };
-        setUser(userObj);
-      } else if (user || user === null) {
-        setUser(false);
-      }
-    });
-  }, []);
+  const [userToken, setUserToken] = useState(null);
 
   return (
     <>
-      <Routes />
-      <h1>React Template</h1>
+      { userToken
+        ? <Routes userToken={userToken} setUserToken={setUserToken} />
+        : <LoginPage userToken={userToken} setUserToken={setUserToken} />
+      }
     </>
   );
 }
