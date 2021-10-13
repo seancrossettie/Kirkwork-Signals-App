@@ -4,11 +4,9 @@ import { Input } from '@chakra-ui/input';
 import { Button } from '@chakra-ui/button';
 import { Text } from '@chakra-ui/layout';
 import { useFormik } from 'formik';
-import { useHistory } from 'react-router-dom';
 import { getAuthToken } from '../helpers/data/data';
 
 function LoginPage({ setUserToken }) {
-  const history = useHistory();
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -18,7 +16,6 @@ function LoginPage({ setUserToken }) {
       getAuthToken(values.email, values.password).then((token) => {
         setUserToken(token);
       });
-      history.push('/');
     }
   });
 
@@ -35,6 +32,7 @@ function LoginPage({ setUserToken }) {
 }
 
 LoginPage.propTypes = {
+  userToken: PropTypes.string,
   setUserToken: PropTypes.func.isRequired
 };
 

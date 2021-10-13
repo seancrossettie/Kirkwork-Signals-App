@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      { userToken
+      { userToken !== null
         ? <Routes userToken={userToken} setUserToken={setUserToken} />
         : <LoginPage userToken={userToken} setUserToken={setUserToken} />
       }

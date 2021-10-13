@@ -7,8 +7,8 @@ import SignalsPage from '../pages/SignalsPage';
 function Routes({ userToken, setUserToken }) {
   return (
     <Switch>
-      <Route exact path='/' component={() => <SignalsPage userToken={userToken} />}/>
-      <Route exact path='/login' component={() => <LoginPage userToken={userToken} setUserToken={setUserToken} />} />
+      <Route exact path='/' component={() => <SignalsPage userToken={userToken} setUserToken={setUserToken} />} />
+      <Route path='/' component={() => <LoginPage userToken={userToken} setUserToken={setUserToken} />} />
     </Switch>
   );
 }
