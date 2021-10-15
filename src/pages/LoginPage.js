@@ -20,18 +20,14 @@ function LoginPage({ setUserToken }) {
   });
 
   return (
-    <Box display='flex' flexDirection='row'>
-      <Box marginLeft='25%'/>
-        <Box display='flex' flexDirection='column' marginTop='2rem'>
-          <Text fontSize='6xl'>Login</Text>
-          <form onSubmit={formik.handleSubmit}>
-            <Input name='email' placeholder='Email' value={formik.values.email} onChange={formik.handleChange} />
-            <Input name='password' placeholder='Password' value={formik.values.password} onChange={formik.handleChange} />
-            <Button type='submit'>Login</Button>
-          </form>
-        </Box>
-      <Box marginRight='25%'/>
-    </Box>
+      <Box px='25%' flexDirection='column' marginTop='2rem'>
+        <Text fontSize='6xl'>Login</Text>
+        <form onSubmit={formik.handleSubmit}>
+          <Input name='email' placeholder='Email' value={formik.values.email} onChange={formik.handleChange} />
+          <Input name='password' type='password' placeholder='Password' value={formik.values.password} onChange={formik.handleChange} />
+          <Button type='submit'>Login</Button>
+        </form>
+      </Box>
   );
 }
 
