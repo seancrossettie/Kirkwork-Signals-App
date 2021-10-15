@@ -11,7 +11,7 @@ const getAuthToken = (email, password) => new Promise((resolve, reject) => {
 });
 
 const getSignals = (authToken) => new Promise((resolve, reject) => {
-  axios.get('https://grasperapi.azurewebsites.net/api/v1/Signals?Page=1&Limit=10', {
+  axios.get('https://grasperapi.azurewebsites.net/api/v1/Signals?Page=6&Limit=10', {
     headers: { Authorization: `Bearer ${authToken}` }
   })
     .then((response) => resolve(response.data.items))
