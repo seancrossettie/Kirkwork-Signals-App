@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '@chakra-ui/button';
 import { Grid, GridItem } from '@chakra-ui/layout';
 import { getSignals } from '../helpers/data/data';
 import SignalCards from '../components/Signals/SignalCards';
 import SingalHeader from '../components/Signals/SingalHeader';
+import NavBar from '../components/Navigation/NavBar';
+// import PaginationCrumbs from '../components/Navigation/PaginationCrumbs';
 
 const SignalsPage = ({ userToken, setUserToken }) => {
   const [signals, setSignals] = useState([]);
+  // const [pageNumber, setPageNumber] = useState('1');
 
   useEffect(() => {
-    getSignals(userToken).then((response) => setSignals(response));
+    getSignals(userToken, 1).then((response) => setSignals(response));
   }, []);
 
   return (
     <>
-      <Button onClick={() => setUserToken(null)}>Logout</Button>
+      <NavBar userToken={userToken} setUserToken={setUserToken} />
       <Grid
         templateColumns='repeat(7, 1fr)'
-        templateRows='repeat(10, 1fr)'
+        templateRows='repeat(12, 1fr)'
         gap={8}
+        m='2rem'
       >
         <SingalHeader />
           {
@@ -36,6 +39,12 @@ const SignalsPage = ({ userToken, setUserToken }) => {
               </GridItem>
             ))
           }
+        {/* <GridItem rowSpan={2} colSpan={7}>
+          <PaginationCrumbs
+            pageNumber={pageNumber}
+            setPageNumber={setPageNumber}
+          />
+        </GridItem> */}
       </Grid>
     </>
   );
