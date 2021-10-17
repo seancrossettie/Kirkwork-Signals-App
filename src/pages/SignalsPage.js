@@ -5,19 +5,24 @@ import { getSignals } from '../helpers/data/data';
 import SignalCards from '../components/Signals/SignalCards';
 import SingalHeader from '../components/Signals/SingalHeader';
 import NavBar from '../components/Navigation/NavBar';
+import PageSizeSelect from '../components/Navigation/PageSizeSelect';
 // import PaginationCrumbs from '../components/Navigation/PaginationCrumbs';
 
 const SignalsPage = ({ userToken, setUserToken }) => {
   const [signals, setSignals] = useState([]);
-  // const [pageNumber, setPageNumber] = useState('1');
+  const [pageSize, setPageSize] = useState(true);
 
   useEffect(() => {
-    getSignals(userToken, 1).then((response) => setSignals(response));
+    if (pageSize) {
+      getSignals(userToken, 10).then((response) => setSignals(response));
+    } else if (pageSize) {
+      getSignals(userToken, 25).then((response) => setSignals((response)));
+    }
   }, []);
 
   return (
     <>
-      <NavBar userToken={userToken} setUserToken={setUserToken} />
+      <NavBar userToken={userToken} setUserToken={setUserToken} pageSize={pageSize} setPageSize={setPageSize} />
       <Grid
         templateColumns='repeat(7, 1fr)'
         templateRows='repeat(12, 1fr)'
@@ -25,19 +30,20 @@ const SignalsPage = ({ userToken, setUserToken }) => {
         m='2rem'
       >
         <SingalHeader />
-          {
-            signals.map((signal, i) => (
-              <GridItem colSpan={7} key={i}>
-                <SignalCards
-                  alarmNum={signal.alarmNum}
-                  eventCodeDesc={signal.eventCodeDesc}
-                  pointDesc={signal.pointDesc}
-                  signalCode={signal.signalCode}
-                  xmit={signal.xmit}
-                  siteDate={signal.siteDate}
-                />
+          { signals
+            ? signals.map((signal, i) => (
+                <GridItem colSpan={7} key={i}>
+                  <SignalCards
+                    alarmNum={signal.alarmNum}
+                    eventCodeDesc={signal.eventCodeDesc}
+                    pointDesc={signal.pointDesc}
+                    signalCode={signal.signalCode}
+                    xmit={signal.xmit}
+                    siteDate={signal.siteDate}
+                  />
               </GridItem>
             ))
+            : ''
           }
         {/* <GridItem rowSpan={2} colSpan={7}>
           <PaginationCrumbs
@@ -45,6 +51,7 @@ const SignalsPage = ({ userToken, setUserToken }) => {
             setPageNumber={setPageNumber}
           />
         </GridItem> */}
+        <PageSizeSelect userToken={userToken} pageSize={pageSize} setPageSize={setPageSize} signals={signals} setSignals={setSignals} />
       </Grid>
     </>
   );
