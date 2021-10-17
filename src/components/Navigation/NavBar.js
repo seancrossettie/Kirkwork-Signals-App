@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Text } from '@chakra-ui/layout';
+import {
+  Box, Flex, Heading, Spacer
+} from '@chakra-ui/layout';
 import { Button } from '@chakra-ui/button';
 
 const NavBar = ({
@@ -13,10 +15,15 @@ const NavBar = ({
   };
 
   return (
-    <Box display='flex' flexDirection='row' m='2rem'>
-      <Text fontSize='2xl' mr='auto'> My Singals</Text>
-      <Button onClick={() => handleLogout()}>Logout</Button>
-    </Box>
+    <Flex mb={8} p='5' boxShadow='lg'>
+      <Box p='2'>
+        <Heading fontSize='2xl'> My Singals</Heading>
+      </Box>
+      <Spacer />
+      <Box>
+        <Button colorScheme='teal' mr='4' onClick={() => handleLogout()}>Logout</Button>
+      </Box>
+    </Flex>
   );
 };
 

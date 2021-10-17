@@ -25,7 +25,7 @@ function LoginPage({ setUserToken }) {
         <form onSubmit={formik.handleSubmit}>
           <Input name='email' placeholder='Email' value={formik.values.email} onChange={formik.handleChange} />
           <Input name='password' placeholder='Password' value={formik.values.password} onChange={formik.handleChange} />
-          <Button type='submit'>Login</Button>
+          <Button colorScheme='teal' type='submit'>Login</Button>
         </form>
       </Box>
   );

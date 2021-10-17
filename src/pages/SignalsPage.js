@@ -5,19 +5,19 @@ import { getSignals } from '../helpers/data/data';
 import SignalCards from '../components/Signals/SignalCards';
 import SingalHeader from '../components/Signals/SingalHeader';
 import NavBar from '../components/Navigation/NavBar';
-import PageSizeSelect from '../components/Navigation/PageSizeSelect';
-// import PaginationCrumbs from '../components/Navigation/PaginationCrumbs';
+import Footer from '../components/Footer/Footer';
 
 const SignalsPage = ({ userToken, setUserToken }) => {
   const [signals, setSignals] = useState([]);
-  const [pageSize, setPageSize] = useState(true);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const [max, setMax] = useState(0);
 
   useEffect(() => {
-    if (pageSize) {
-      getSignals(userToken, 10).then((response) => setSignals(response));
-    } else if (pageSize) {
-      getSignals(userToken, 25).then((response) => setSignals((response)));
-    }
+    getSignals(userToken, pageNumber, pageSize).then((response) => {
+      setSignals(response.items);
+      setMax(response.numPages);
+    });
   }, []);
 
   return (
@@ -45,14 +45,18 @@ const SignalsPage = ({ userToken, setUserToken }) => {
             ))
             : ''
           }
-        {/* <GridItem rowSpan={2} colSpan={7}>
-          <PaginationCrumbs
-            pageNumber={pageNumber}
-            setPageNumber={setPageNumber}
-          />
-        </GridItem> */}
-        <PageSizeSelect userToken={userToken} pageSize={pageSize} setPageSize={setPageSize} signals={signals} setSignals={setSignals} />
       </Grid>
+      <Footer
+          userToken={userToken}
+          setPageSize={setPageSize}
+          pageSize={pageSize}
+          signals={signals}
+          setSignals={setSignals}
+          pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
+          max={max}
+          setMax={setMax}
+        />
     </>
   );
 };
@@ -61,10 +65,5 @@ SignalsPage.propTypes = {
   userToken: PropTypes.string.isRequired,
   setUserToken: PropTypes.func.isRequired
 };
-
-// overflow='hidden'
-// boxShadow='0 4px 12px 0 rgba(0, 0, 0, 0.05)'
-// borderWidth='1px'
-// margin='auto'
 
 export default SignalsPage;
