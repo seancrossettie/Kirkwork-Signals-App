@@ -10,8 +10,8 @@ const getAuthToken = (email, password) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getSignals = (authToken) => new Promise((resolve, reject) => {
-  axios.get('https://grasperapi.azurewebsites.net/api/v1/Signals?Page=6&Limit=10', {
+const getSignals = (authToken, pageSize) => new Promise((resolve, reject) => {
+  axios.get(`https://grasperapi.azurewebsites.net/api/v1/Signals?Page=6&Limit=${pageSize}`, {
     headers: { Authorization: `Bearer ${authToken}` }
   })
     .then((response) => resolve(response.data.items))

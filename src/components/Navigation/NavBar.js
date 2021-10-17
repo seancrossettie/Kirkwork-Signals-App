@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { Box, Text } from '@chakra-ui/layout';
 import { Button } from '@chakra-ui/button';
 
-const NavBar = ({ userToken, setUserToken }) => {
+const NavBar = ({
+  userToken, setUserToken
+}) => {
   const handleLogout = () => {
     if (userToken) {
       setUserToken(null);
@@ -12,7 +14,7 @@ const NavBar = ({ userToken, setUserToken }) => {
 
   return (
     <Box display='flex' flexDirection='row' m='2rem'>
-      <Text fontSize="2xl" mr='auto'> My Singals</Text>
+      <Text fontSize='2xl' mr='auto'> My Singals</Text>
       <Button onClick={() => handleLogout()}>Logout</Button>
     </Box>
   );
@@ -20,7 +22,7 @@ const NavBar = ({ userToken, setUserToken }) => {
 
 NavBar.propTypes = {
   userToken: PropTypes.string.isRequired,
-  setUserToken: PropTypes.func.isRequired
+  setUserToken: PropTypes.func.isRequired,
 };
 
 export default NavBar;
