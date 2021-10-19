@@ -26,7 +26,7 @@ const Footer = ({
         setPageNumber(1);
         break;
       case 'previous':
-        if (pageSize > 1) {
+        if (pageNumber > 1) {
           getSignals(userToken, pageNumber - 1, pageSize).then((response) => setSignals(response.items));
           setPageNumber(pageNumber - 1);
         }
