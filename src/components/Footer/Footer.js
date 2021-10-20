@@ -32,7 +32,7 @@ const Footer = ({
         }
         break;
       case 'next':
-        if (pageSize < max) {
+        if (pageNumber < max) {
           getSignals(userToken, pageNumber + 1, pageSize).then((response) => setSignals(response.items));
           setPageNumber(pageNumber + 1);
         }
