@@ -2,6 +2,9 @@
 ## Motivation
 Create a SPA that allows users to view data of data from a user authenticated database. The app includes the use of server-side pagination and React.js
 
+## Video Walkthrough
+KirkWork Signals - Watch Video
+
 ## Technologies
 - React.js
 - Formik (for form validation)
@@ -16,4 +19,4 @@ After authentication via bearer token, the user can view all data in a React Tab
 <img width="1792" alt="Screen Shot 2021-10-20 at 12 36 06 PM" src="https://user-images.githubusercontent.com/76828201/138143487-7ce105dd-f552-400c-b79d-54dddb2c2cd1.png">
 
 ## Link to Deployed Website
-## Video Walkthrough
+
