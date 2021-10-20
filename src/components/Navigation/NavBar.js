@@ -15,7 +15,7 @@ const NavBar = ({
   };
 
   return (
-    <Flex mb={8} p='5' boxShadow='lg'>
+    <Flex mb={8} p='5' boxShadow='lg' w='auto'>
       <Box p='2'>
         <Heading fontSize='2xl'> My Singals</Heading>
       </Box>

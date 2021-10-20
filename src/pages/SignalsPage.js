@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, GridItem } from '@chakra-ui/layout';
+import { Table } from '@chakra-ui/react';
 import { getSignals } from '../helpers/data/data';
-import SignalCards from '../components/Signals/SignalCards';
-import SingalHeader from '../components/Signals/SingalHeader';
 import NavBar from '../components/Navigation/NavBar';
 import Footer from '../components/Footer/Footer';
+import SingalHeader from '../components/Signals/SingalHeader';
+import SignalCards from '../components/Signals/SignalCards';
 
 const SignalsPage = ({ userToken, setUserToken }) => {
   const [signals, setSignals] = useState([]);
@@ -23,40 +23,33 @@ const SignalsPage = ({ userToken, setUserToken }) => {
   return (
     <>
       <NavBar userToken={userToken} setUserToken={setUserToken} pageSize={pageSize} setPageSize={setPageSize} />
-      <Grid
-        templateColumns='repeat(7, 1fr)'
-        templateRows='repeat(12, 1fr)'
-        gap={8}
-        m='2rem'
-      >
+      <Table>
         <SingalHeader />
-          { signals
-            ? signals.map((signal, i) => (
-                <GridItem colSpan={7} key={i}>
-                  <SignalCards
-                    alarmNum={signal.alarmNum}
-                    eventCodeDesc={signal.eventCodeDesc}
-                    pointDesc={signal.pointDesc}
-                    signalCode={signal.signalCode}
-                    xmit={signal.xmit}
-                    siteDate={signal.siteDate}
-                  />
-              </GridItem>
-            ))
-            : ''
-          }
-      </Grid>
+        {
+          signals.map((signal, i) => (
+            <SignalCards
+              key={i}
+              alarmNum={signal.alarmNum}
+              eventCodeDesc={signal.eventCodeDesc}
+              pointDesc={signal.pointDesc}
+              signalCode={signal.signalCode}
+              xmit={signal.xmit}
+              siteDate={signal.siteDate}
+            />
+          ))
+        }
+      </Table>
       <Footer
-          userToken={userToken}
-          setPageSize={setPageSize}
-          pageSize={pageSize}
-          signals={signals}
-          setSignals={setSignals}
-          pageNumber={pageNumber}
-          setPageNumber={setPageNumber}
-          max={max}
-          setMax={setMax}
-        />
+        userToken={userToken}
+        setPageSize={setPageSize}
+        pageSize={pageSize}
+        signals={signals}
+        setSignals={setSignals}
+        pageNumber={pageNumber}
+        setPageNumber={setPageNumber}
+        max={max}
+        setMax={setMax}
+      />
     </>
   );
 };
