@@ -3,10 +3,7 @@
 Create a SPA that allows users to view data of data from a user authenticated database. The app includes the use of server-side pagination and React.js
 
 ## Video Walkthrough
-<a href="https://www.loom.com/share/9c2a970381734bb980ddd166182099d9">
-    <p>KirkWork Signals - Watch Video</p>
-    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/9c2a970381734bb980ddd166182099d9-with-play.gif">
-  </a>
+https://www.loom.com/share/9c2a970381734bb980ddd166182099d9
 
 ## Technologies
 - React.js
