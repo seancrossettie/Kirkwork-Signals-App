@@ -1,56 +1,16 @@
-# SR React Template
-
-**Use this template to get up and running quickly on projects.**
-
-To run, install npm
-
-``
-npm install
-``
-
-Then, install react-router-dom
-
-``
-npm i react-router-dom
-``
-
-## Packages
-Included in this template are the following packages/frameworks/CDNs
-- Material UI Core
-
-``
-npm install @material-ui/core
-``
-- Material UI Icons
-
-``
-npm install @material-ui/icons
-``
-- Moment.js
-
-``
-  npm install moment --save
-``
-
-- Styled Components
-
-``
-npm install --save styled-components
-``
-- Bootstrap (included)
-- Firebase Auth (included)
-
-**Before using this template, please update the .env file with you firbase info if you plan on using firebase for your project; otherwise, delete all firbase boilerplate related code to remove errors.**
-
-# README Template Below
-
-# Title
-
+# Signals
 ## Motivation
+Create a SPA that allows users to view data of data from a user authenticated database. The app includes the use of server-side pagination and React.js
 
 ## Technologies
+- React.js
+- Formik (for form validation)
+- Chakra UI
+- Grasper API (for sample data)
 ## User Stories
+After authentication via bearer token, the user can view all data in a React Table, with up to 10 or 25 items displayed on page and pagination controls in the footer. 
 
 ## Screenshots
+
 ## Link to Deployed Website
 ## Video Walkthrough
