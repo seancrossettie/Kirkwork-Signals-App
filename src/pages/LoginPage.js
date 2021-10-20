@@ -20,8 +20,8 @@ function LoginPage({ setUserToken }) {
   });
 
   return (
-      <Box px='25%' flexDirection='column' marginTop='2rem'>
-        <Text fontSize='6xl'>Login</Text>
+      <Box px='10%' flexDirection='column' marginTop='2rem'>
+        <Text fontSize='2xl'>Login</Text>
         <form onSubmit={formik.handleSubmit}>
           <Input name='email' placeholder='Email' value={formik.values.email} onChange={formik.handleChange} />
           <Input name='password' placeholder='Password' value={formik.values.password} onChange={formik.handleChange} />
